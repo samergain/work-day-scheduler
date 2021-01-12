@@ -1,5 +1,5 @@
 //set the current DateTime in header
-var currentDT = moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentDT = moment().format('MMMM Do YYYY, h:mm a');
 $("#currentDay").text(currentDT);
 styleTxtArea();
 getLocStorage();
@@ -17,11 +17,7 @@ $(".btn").on("click",function(){
     localStorage.setItem(locStorageKey,locStorageVal);
 });
 
-//clear data button e.handler
-// $("#clear").on("click", resetData);
-//setting classes for textAreas based on the current time
-//grab all textAreas in an array, get the value for each, prepare jQuery selector string,
-//compare each val with currentHour and set class accordingly
+
 function styleTxtArea(){
     var currentTime = moment().format();
     var currentHour = currentTime.split("T")[1].split(":")[0];
@@ -50,11 +46,9 @@ function getLocStorage(){
 }
 
 //clear all entered data
-// function resetData() {
-//     var hourBoxs = $("textarea");
-//     for (var i=0; i<hourBoxs.length; i++) {
-//         document.getElementsByTagName("textarea")[i].setAttribute("value", ""); 
-// }
-// localStorage.clear();
-// }
+$("#clear").on("click", resetData);
+function resetData() {
+        localStorage.clear();
+        location.reload();
+}
 
